@@ -1,6 +1,13 @@
 # Editors
-.vscode/
-.idea/
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
 # Vagrant
 .vagrant/
@@ -38,6 +45,10 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+
+node_modules
+dist-ssr
+*.local
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -123,3 +134,12 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
