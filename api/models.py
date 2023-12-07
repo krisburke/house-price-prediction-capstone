@@ -1,7 +1,8 @@
 from pydantic import BaseModel
 from typing import Literal
-from enum import Enum
 import pandas as pd
+
+from utils import add_features
 
 class HouseData(BaseModel):
     """
@@ -77,8 +78,8 @@ class HouseData(BaseModel):
     PoolArea: int
     PoolQC: Literal['Ex', 'Gd', 'TA', 'Fa', 'NA']
     MiscVal: int
-    HouseAge: int
-    HouseRemodelAge: int
+    YearBuilt: int
+    YearRemodAdd: int
     TotalSF: int
     TotalArea: int
     TotalBaths: int
@@ -86,11 +87,7 @@ class HouseData(BaseModel):
 
 
 def transform(input_data: HouseData):
-    input_data = input_data.dict()
+    input_data = input_data.model_dump()
     input_data = pd.DataFrame([input_data])
-    input_data = add_feature_engineering(input_data)
+    input_data = add_features(input_data)
     return input_data
-
-def add_feature_engineering(df):
-    # TODO: Add feature engineering using shared util functions
-    return df
