@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
+import App from './App/App.tsx';
+
 import '@mantine/core/styles.css';
-// import '@mantine/form/styles.css';
 import { MantineProvider } from '@mantine/core';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(

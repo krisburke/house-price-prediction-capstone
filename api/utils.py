@@ -20,12 +20,12 @@ def add_house_remodel_age(df):
     df.drop(columns=['YearRemodAdd'], inplace=True)
     return df
 
-def add_features(df, yr_sold=None):
+def add_features(df):
     """
     Adds the following features to the dataframe:
     - HouseAge
     - HouseRemodelAge
     """
-    df = add_house_age(df, yr_sold=yr_sold)
-    df = add_house_remodel_age(df, yr_sold=yr_sold)
+    df = add_house_age(df)
+    df = add_house_remodel_age(df)
     return df

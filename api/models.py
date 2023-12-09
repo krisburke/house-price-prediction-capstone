@@ -82,12 +82,17 @@ class HouseData(BaseModel):
     YearRemodAdd: int
     TotalSF: int
     TotalArea: int
-    TotalBaths: int
+    TotalBaths: float
     TotalPorchSF: int
 
 
 def transform(input_data: HouseData):
-    input_data = input_data.model_dump()
-    input_data = pd.DataFrame([input_data])
-    input_data = add_features(input_data)
-    return input_data
+    try:
+        input_data_dict = input_data.model_dump()
+        input_df = pd.DataFrame([input_data_dict])
+        input_df = add_features(input_df)
+        return input_df
+
+    except Exception as e:
+        print(f"Error in transform function: {e}")
+        raise
