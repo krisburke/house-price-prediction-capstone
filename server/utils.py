@@ -1,4 +1,3 @@
-import pandas as pd
 from datetime import datetime
 
 def add_house_age(df):
