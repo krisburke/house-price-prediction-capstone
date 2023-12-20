@@ -48,7 +48,7 @@ import { useState } from 'react';
 const client = new FastApiClient();
 
 export const InputForm = () => {
-  const [prediction, setPrediction] = useState<null | number>(null);
+  const [prediction, setPrediction] = useState<string | null>(null);
 
   const form = useForm({
     initialValues: DEFAULT_VALUES,
@@ -421,8 +421,8 @@ export const InputForm = () => {
           <Button type='submit'>Submit</Button>
         </Group>
       </form>
-      <Card style={{ marginTop: 20 }}>
-        <Text>Predicted Sale Price: {prediction}</Text>
+      <Card className={styles.prediction}>
+        <Text>Predicted Sale Price: {prediction ?? ''}</Text>
       </Card>
     </Box>
   );

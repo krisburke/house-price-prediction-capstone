@@ -6,20 +6,6 @@ from joblib import load
 import numpy as np
 from models import HouseData, transform
 
-# import os
-# from pathlib import Path
-# def print_directory_structure(startpath):
-#     startpath_str = str(startpath)
-#     for root, dirs, files in os.walk(startpath_str):
-#         level = root.replace(startpath_str, '').count(os.sep)
-#         indent = ' ' * 4 * (level)
-#         print(f"{indent}{os.path.basename(root)}/")
-#         subindent = ' ' * 4 * (level + 1)
-#         for f in files:
-#             print(f"{subindent}{f}")
-# print("Current Working Directory:", Path.cwd())
-# print_directory_structure(Path.cwd())
-
 model = load('house-price.joblib')
 
 app = FastAPI()
@@ -43,7 +29,7 @@ app.mount('/static', StaticFiles(directory='static'), name='static')
 async def healthcheck():
     return {'message': 'API is healthy'}
 
-@app.post("api/predict", tags=["predict"])
+@app.post("/api/predict", tags=["predict"])
 async def make_prediction(data: HouseData) -> dict:
     try:
         df = transform(data)
