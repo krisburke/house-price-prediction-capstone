@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import Literal
 import pandas as pd
 
-from app.utils import add_features
+from utils import add_features
 
 class HouseData(BaseModel):
     """

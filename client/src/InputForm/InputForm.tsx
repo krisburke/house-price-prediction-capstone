@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Card,
   Group,
   NumberInput,
   Select,
@@ -40,8 +41,15 @@ import {
   UtilitiesOptions,
 } from './constants';
 import { TransformedValues, useForm } from '@mantine/form';
+import { FastApiClient } from '../client';
+import { HousePredictionInput } from './types';
+import { useState } from 'react';
+
+const client = new FastApiClient();
 
 export const InputForm = () => {
+  const [prediction, setPrediction] = useState<null | number>(null);
+
   const form = useForm({
     initialValues: DEFAULT_VALUES,
     transformValues: (values) => ({
@@ -52,20 +60,17 @@ export const InputForm = () => {
     }),
   });
 
+  const getPrediction = async (values: TransformedValues<typeof form>) => {
+    const prediction = await client.getPrediction(
+      values as unknown as HousePredictionInput
+    );
+    if (prediction) {
+      setPrediction(prediction);
+    }
+  };
+
   // TODO integrate sliders with form
   // TODO total baths validation only half baths
-
-  const getPrediction = async (values: TransformedValues<typeof form>) => {
-    const response = await fetch('http://localhost:8000/predict', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(values),
-    });
-    const data = await response.json();
-    return data;
-  };
 
   return (
     <Box maw={340} mx='auto'>
@@ -416,6 +421,9 @@ export const InputForm = () => {
           <Button type='submit'>Submit</Button>
         </Group>
       </form>
+      <Card style={{ marginTop: 20 }}>
+        <Text>Predicted Sale Price: {prediction}</Text>
+      </Card>
     </Box>
   );
 };
