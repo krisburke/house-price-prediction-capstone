@@ -110,12 +110,16 @@ export const InputForm = () => {
           id='MSSubClass'
           label='MSSubClass'
           data={MSSubClassOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('MSSubClass')}
         />
         <Select
           id='MSZoning'
           label='MSZoning'
           data={MSZoningOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('MSZoning')}
         />
         <NumberInput
@@ -132,66 +136,88 @@ export const InputForm = () => {
           id='Street'
           label='Street'
           data={StreetOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Street')}
         />
         <Select
           id='LotShape'
           label='LotShape'
           data={LotShapeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('LotShape')}
         />
         <Select
           id='LandContour'
           label='LandContour'
           data={LandContourOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('LandContour')}
         />
         <Select
           id='Utilities'
           label='Utilities'
           data={UtilitiesOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Utilities')}
         />
         <Select
           id='LotConfig'
           label='LotConfig'
           data={LotConfigOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('LotConfig')}
         />
         <Select
           id='LandSlope'
           label='LandSlope'
           data={LandSlopeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('LandSlope')}
         />
         <Select
           id='Neighborhood'
           label='Neighborhood'
           data={NeighborhoodOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Neighborhood')}
         />
         <Select
           id='Condition1'
           label='Condition1'
           data={ConditionOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Condition1')}
         />
         <Select
           id='Condition2'
           label='Condition2'
           data={ConditionOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Condition2')}
         />
         <Select
           id='BldgType'
           label='BldgType'
           data={BldgTypeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BldgType')}
         />
         <Select
           id='HouseStyle'
           label='HouseStyle'
           data={HouseStyleOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('HouseStyle')}
         />
         <Text component='label'>Overall Quality</Text>
@@ -216,30 +242,40 @@ export const InputForm = () => {
           id='RoofStyle'
           label='RoofStyle'
           data={RoofStyleOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('RoofStyle')}
         />
         <Select
           id='RoofMatl'
           label='RoofMatl'
           data={RoofMatlOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('RoofMatl')}
         />
         <Select
           id='Exterior1st'
           label='Exterior1st'
           data={ExteriorOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Exterior1st')}
         />
         <Select
           id='Exterior2nd'
           label='Exterior2nd'
           data={ExteriorOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Exterior2nd')}
         />
         <Select
           id='MasVnrType'
           label='MasVnrType'
           data={MassVnrTypeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('MasVnrType')}
         />
         <NumberInput
@@ -251,48 +287,64 @@ export const InputForm = () => {
           id='ExterQual'
           label='ExterQual'
           data={QualityOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('ExterQual')}
         />
         <Select
           id='ExterCond'
           label='ExterCond'
           data={QualityOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('ExterCond')}
         />
         <Select
           id='Foundation'
           label='Foundation'
           data={FoundationOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Foundation')}
         />
         <Select
           id='BsmtQual'
           label='BsmtQual'
           data={QualityOrNAOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BsmtQual')}
         />
         <Select
           id='BsmtCond'
           label='BsmtCond'
           data={QualityOrNAOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BsmtCond')}
         />
         <Select
           id='BsmtExposure'
           label='BsmtExposure'
           data={BsmtExposureOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BsmtExposure')}
         />
         <Select
           id='BsmtFinType1'
           label='BsmtFinType1'
           data={BsmtFinTypeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BsmtFinType1')}
         />
         <Select
           id='BsmtFinType2'
           label='BsmtFinType2'
           data={BsmtFinTypeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('BsmtFinType2')}
         />
         <NumberInput
@@ -304,24 +356,32 @@ export const InputForm = () => {
           id='Heating'
           label='Heating'
           data={HeatingOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Heating')}
         />
         <Select
           id='HeatingQC'
           label='HeatingQC'
           data={QualityOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('HeatingQC')}
         />
         <Select
           id='CentralAir'
           label='CentralAir'
           data={CentralAirOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('CentralAir')}
         />
         <Select
           id='Electrical'
           label='Electrical'
           data={ElectricalOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Electrical')}
         />
         <NumberInput
@@ -343,6 +403,8 @@ export const InputForm = () => {
           id='KitchenQual'
           label='KitchenQual'
           data={QualityOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('KitchenQual')}
         />
         <NumberInput
@@ -354,6 +416,8 @@ export const InputForm = () => {
           id='Function'
           label='Function'
           data={HomeFunctionOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('Function')}
         />
         <NumberInput
@@ -365,18 +429,24 @@ export const InputForm = () => {
           id='FireplaceQu'
           label='FireplaceQu'
           data={QualityOrNAOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('FireplaceQu')}
         />
         <Select
           id='GarageType'
           label='GarageType'
           data={GarageTypeOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('GarageType')}
         />
         <Select
           id='GarageFinish'
           label='GarageFinish'
           data={GarageFinishOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('GarageFinish')}
         />
         <NumberInput
@@ -388,12 +458,16 @@ export const InputForm = () => {
           id='GarageQual'
           label='GarageQual'
           data={QualityOrNAOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('GarageQual')}
         />
         <Select
           id='PavedDrive'
           label='PavedDrive'
           data={PavedDriveOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('PavedDrive')}
         />
         <NumberInput
@@ -405,6 +479,8 @@ export const InputForm = () => {
           id='PoolQC'
           label='PoolQC'
           data={QualityOrNAOptions}
+          clearable={false}
+          allowDeselect={false}
           {...form.getInputProps('PoolQC')}
         />
         <NumberInput
