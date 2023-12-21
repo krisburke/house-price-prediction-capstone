@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Group,
+  Loader,
   NumberInput,
   Select,
   Slider,
@@ -49,6 +50,7 @@ const client = new FastApiClient();
 
 export const InputForm = () => {
   const [prediction, setPrediction] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm({
     initialValues: DEFAULT_VALUES,
@@ -61,9 +63,11 @@ export const InputForm = () => {
   });
 
   const getPrediction = async (values: TransformedValues<typeof form>) => {
+    setIsLoading(true);
     const prediction = await client.getPrediction(
       values as unknown as HousePredictionInput
     );
+    setIsLoading(false);
     if (prediction) {
       setPrediction(prediction);
     }
@@ -418,11 +422,15 @@ export const InputForm = () => {
           {...form.getInputProps('TotalPorchSF')}
         />
         <Group justify='flex-end' mt='md'>
-          <Button type='submit'>Submit</Button>
+          <Button type='submit' disabled={isLoading}>
+            Submit
+          </Button>
         </Group>
       </form>
       <Card className={styles.prediction}>
-        <Text>Predicted Sale Price: {prediction ?? ''}</Text>
+        <Text>
+          Predicted Sale Price: {isLoading ? <Loader /> : prediction ?? ''}
+        </Text>
       </Card>
     </Box>
   );

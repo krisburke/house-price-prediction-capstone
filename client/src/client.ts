@@ -5,7 +5,8 @@ export class FastApiClient {
   currencyFormatter: Intl.NumberFormat;
   constructor() {
     console.log(import.meta.env.BASE_URL);
-    this.baseApiUrl = import.meta.env.BASE_URL.replace('/static', '/api');
+    this.baseApiUrl =
+      process.env.NODE_ENV === 'production' ? import.meta.env.BASE_URL : '';
     this.currencyFormatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
@@ -16,7 +17,7 @@ export class FastApiClient {
 
   async getPrediction(values: HousePredictionInput) {
     try {
-      const response = await fetch(`${this.baseApiUrl}/predict`, {
+      const response = await fetch(`${this.baseApiUrl}/api/predict`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
