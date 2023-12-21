@@ -18,21 +18,20 @@ export class FastApiClient {
   }
 
   async getPrediction(values: HousePredictionInput) {
-    try {
-      const response = await fetch(`${this.baseApiUrl}/api/predict`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-      const data = await response.json();
-
-      return data.prediction
-        ? this.currencyFormatter.format(data.prediction)
-        : null;
-    } catch (error) {
-      console.error(error);
+    const response = await fetch(`${this.baseApiUrl}/api/predict`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    });
+    if (!response.ok) {
+      throw new Error('Could not get prediction');
     }
+    const data = await response.json();
+
+    return data.prediction
+      ? this.currencyFormatter.format(data.prediction)
+      : null;
   }
 }

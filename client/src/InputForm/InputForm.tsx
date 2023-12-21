@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   Group,
-  Loader,
   NumberInput,
   Select,
   Slider,
@@ -51,6 +50,27 @@ const client = new FastApiClient();
 export const InputForm = () => {
   const [prediction, setPrediction] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleInitiateFetch = () => {
+    setIsError(false);
+    setErrorMessage('');
+    setIsLoading(true);
+    setPrediction(null);
+  };
+
+  const handleCompleteFetch = (prediction: string | null) => {
+    setIsLoading(false);
+    setPrediction(prediction);
+  };
+
+  const handleError = (e: Error) => {
+    setIsLoading(false);
+    setIsError(true);
+    setErrorMessage(e.message);
+    setPrediction(null);
+  };
 
   const form = useForm({
     initialValues: DEFAULT_VALUES,
@@ -63,13 +83,14 @@ export const InputForm = () => {
   });
 
   const getPrediction = async (values: TransformedValues<typeof form>) => {
-    setIsLoading(true);
-    const prediction = await client.getPrediction(
-      values as unknown as HousePredictionInput
-    );
-    setIsLoading(false);
-    if (prediction) {
-      setPrediction(prediction);
+    handleInitiateFetch();
+    try {
+      const prediction = await client.getPrediction(
+        values as unknown as HousePredictionInput
+      );
+      handleCompleteFetch(prediction);
+    } catch (e) {
+      handleError(e as Error);
     }
   };
 
@@ -422,15 +443,18 @@ export const InputForm = () => {
           {...form.getInputProps('TotalPorchSF')}
         />
         <Group justify='flex-end' mt='md'>
-          <Button type='submit' disabled={isLoading}>
+          <Button type='submit' disabled={isLoading} loading={isLoading}>
             Submit
           </Button>
         </Group>
       </form>
-      <Card className={styles.prediction}>
-        <Text>
-          Predicted Sale Price: {isLoading ? <Loader /> : prediction ?? ''}
-        </Text>
+      {isError && (
+        <Card c='red' mt={12}>
+          <Text>{errorMessage}</Text>
+        </Card>
+      )}
+      <Card mt={12}>
+        <Text>Predicted Sale Price: {prediction ?? ''}</Text>
       </Card>
     </Box>
   );
