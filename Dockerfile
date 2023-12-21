@@ -19,4 +19,4 @@ COPY ./server/ .
 # Copy the React build to the server's static directory
 COPY --from=react-build /app/client/dist /app/server/static
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
