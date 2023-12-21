@@ -6,7 +6,9 @@ export class FastApiClient {
   constructor() {
     console.log(import.meta.env.BASE_URL);
     this.baseApiUrl =
-      process.env.NODE_ENV === 'production' ? import.meta.env.BASE_URL : '';
+      process.env.NODE_ENV === 'production'
+        ? import.meta.env.BASE_URL.replace('/static', '')
+        : '';
     this.currencyFormatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
