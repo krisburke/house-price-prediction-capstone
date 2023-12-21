@@ -95,9 +95,9 @@ export const InputForm = () => {
   const form = useForm({
     initialValues: DEFAULT_VALUES,
     validate: formValidators,
-    transformValues: (values) => ({
-      ...values,
-      MSSubClass: Number(values.MSSubClass),
+    transformValues: ({ MSSubClass, ...rest }) => ({
+      ...rest,
+      MSSubClass: Number(MSSubClass),
       OverallQual: overallQualSliderVal,
       OverallCond: overallCondSliderVal,
     }),

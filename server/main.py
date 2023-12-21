@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from joblib import load
 import numpy as np
 from models import HouseData, transform
@@ -41,6 +41,12 @@ async def make_prediction(data: HouseData) -> dict:
         print(f"Error during prediction: {e}")
         raise HTTPException(status_code=500, detail=str(e))
     
+@app.get('/notebook', response_class=HTMLResponse)
+async def serve_html_notebook():
+    with open('static/house-price-prediction.html', 'r') as file:
+        html = file.read()
+    return HTMLResponse(content=html)
+
 @app.get("/{path:path}")
 async def catch_all(path: str):
     return FileResponse('static/index.html')
