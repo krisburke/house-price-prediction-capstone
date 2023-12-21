@@ -40,18 +40,38 @@ import {
   StreetOptions,
   UtilitiesOptions,
 } from './constants';
-import { TransformedValues, useForm } from '@mantine/form';
+import { TransformedValues, isNotEmpty, useForm } from '@mantine/form';
 import { FastApiClient } from '../client';
 import { HousePredictionInput } from './types';
 import { useState } from 'react';
 
 const client = new FastApiClient();
 
+const formValidators = {
+  ...Object.fromEntries(
+    Object.keys(DEFAULT_VALUES).map((key) => [
+      key,
+      isNotEmpty(`Please enter a value for ${key}`),
+    ])
+  ),
+  ['TotalBaths']: (value: number) => {
+    console.log(value);
+    console.log(typeof value);
+    value % 0.5 === 0;
+  },
+};
+
 export const InputForm = () => {
   const [prediction, setPrediction] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [overallQualSliderVal, setOverallQualSliderVal] = useState(
+    DEFAULT_VALUES.OverallQual
+  );
+  const [overallCondSliderVal, setOverallCondSliderVal] = useState(
+    DEFAULT_VALUES.OverallCond
+  );
 
   const handleInitiateFetch = () => {
     setIsError(false);
@@ -74,11 +94,12 @@ export const InputForm = () => {
 
   const form = useForm({
     initialValues: DEFAULT_VALUES,
+    validate: formValidators,
     transformValues: (values) => ({
       ...values,
       MSSubClass: Number(values.MSSubClass),
-      OverallQual: 8,
-      OverallCond: 5,
+      OverallQual: overallQualSliderVal,
+      OverallCond: overallCondSliderVal,
     }),
   });
 
@@ -93,9 +114,6 @@ export const InputForm = () => {
       handleError(e as Error);
     }
   };
-
-  // TODO integrate sliders with form
-  // TODO total baths validation only half baths
 
   return (
     <Box maw={340} mx='auto'>
@@ -223,8 +241,9 @@ export const InputForm = () => {
         <Text component='label'>Overall Quality</Text>
         <Slider
           id='OverallQual'
-          label='OverallQual'
-          defaultValue={5}
+          label={overallQualSliderVal}
+          value={overallQualSliderVal}
+          onChange={setOverallQualSliderVal}
           min={1}
           max={10}
           step={1}
@@ -232,8 +251,9 @@ export const InputForm = () => {
         <Text component='label'>Overall Condition</Text>
         <Slider
           id='OverallCond'
-          label='OverallCond'
-          defaultValue={5}
+          label={overallCondSliderVal}
+          value={overallCondSliderVal}
+          onChange={setOverallCondSliderVal}
           min={1}
           max={10}
           step={1}
