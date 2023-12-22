@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { Box, Button, Card, Group, Text } from '@mantine/core';
+import { Box, Button, Card, Flex, Group, Text } from '@mantine/core';
 import { TransformedValues, useForm, yupResolver } from '@mantine/form';
-import styles from './Form.module.css';
 import { DEFAULT_VALUES } from '../../constants';
 import { FastApiClient } from '../../client';
 import { schema, transformFormValuesForSave } from '../../utils';
@@ -69,21 +68,27 @@ export const Form = () => {
   };
 
   return (
-    <Box maw={700} mx='auto'>
-      <form className={styles.form} onSubmit={form.onSubmit(getPrediction)}>
-        <BasicDetailsFormSection form={form} />
-        <HouseStructureFormSection
-          form={form}
-          overallQualSliderVal={overallQualSliderVal}
-          overallCondSliderVal={overallCondSliderVal}
-          setOverallQualSliderVal={setOverallQualSliderVal}
-          setOverallCondSliderVal={setOverallCondSliderVal}
-        />
-        <OutdoorFeaturesFormSection form={form} />
-        <InteriorFeaturesFormSection form={form} />
-        <FoundationFormSection form={form} />
-        <ParkingFormSection form={form} />
-        <MiscFormSection form={form} />
+    <Box maw={1000}>
+      <form onSubmit={form.onSubmit(getPrediction)}>
+        <Flex>
+          <Flex direction='column'>
+            <BasicDetailsFormSection form={form} />
+            <HouseStructureFormSection
+              form={form}
+              overallQualSliderVal={overallQualSliderVal}
+              overallCondSliderVal={overallCondSliderVal}
+              setOverallQualSliderVal={setOverallQualSliderVal}
+              setOverallCondSliderVal={setOverallCondSliderVal}
+            />
+            <OutdoorFeaturesFormSection form={form} />
+          </Flex>
+          <Flex direction='column'>
+            <InteriorFeaturesFormSection form={form} />
+            <FoundationFormSection form={form} />
+            <ParkingFormSection form={form} />
+            <MiscFormSection form={form} />
+          </Flex>
+        </Flex>
         <Group justify='flex-end' mt='md'>
           <Button type='submit' disabled={isLoading} loading={isLoading}>
             Submit
@@ -91,12 +96,12 @@ export const Form = () => {
         </Group>
       </form>
       {isError && (
-        <Card c='red' mt={12}>
+        <Box c='red' mt={12}>
           <Text>{errorMessage}</Text>
-        </Card>
+        </Box>
       )}
       <Card mt={12}>
-        <Text>Predicted Sale Price: {prediction ?? ''}</Text>
+        <Text size='xl'>Predicted Sale Price: {prediction ?? ''}</Text>
       </Card>
     </Box>
   );

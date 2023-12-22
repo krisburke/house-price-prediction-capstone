@@ -39,7 +39,7 @@ export const MiscFormSection: React.FC<{
     <NumberInput
       id='MiscVal'
       label='MiscVal'
-      description='$Value of miscellaneous feature'
+      description='$ Value of miscellaneous feature'
       form={form}
     />
   </Fieldset>

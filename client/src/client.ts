@@ -26,7 +26,7 @@ export class FastApiClient {
       body: JSON.stringify(values),
     });
     if (!response.ok) {
-      throw new Error('Could not get prediction');
+      throw new Error('Error: Could not get prediction.');
     }
     const data = await response.json();
 
