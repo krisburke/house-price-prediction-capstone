@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -8,6 +9,7 @@ import {
   Slider,
   Text,
 } from '@mantine/core';
+import { TransformedValues, useForm, yupResolver } from '@mantine/form';
 import styles from './InputForm.module.css';
 import {
   BldgTypeOptions,
@@ -22,7 +24,7 @@ import {
   GarageFinishOptions,
   GarageTypeOptions,
   HeatingOptions,
-  HomeFunctionOptions,
+  FunctionalOptions,
   HouseStyleOptions,
   LandContourOptions,
   LandSlopeOptions,
@@ -40,26 +42,11 @@ import {
   StreetOptions,
   UtilitiesOptions,
 } from './constants';
-import { TransformedValues, isNotEmpty, useForm } from '@mantine/form';
 import { FastApiClient } from '../client';
-import { HousePredictionInput } from './types';
-import { useState } from 'react';
+import { schema, transformFormValuesForSave } from './utils';
+import { NumericalQualityScale } from './types';
 
 const client = new FastApiClient();
-
-const formValidators = {
-  ...Object.fromEntries(
-    Object.keys(DEFAULT_VALUES).map((key) => [
-      key,
-      isNotEmpty(`Please enter a value for ${key}`),
-    ])
-  ),
-  ['TotalBaths']: (value: number) => {
-    console.log(value);
-    console.log(typeof value);
-    value % 0.5 === 0;
-  },
-};
 
 export const InputForm = () => {
   const [prediction, setPrediction] = useState<string | null>(null);
@@ -94,10 +81,9 @@ export const InputForm = () => {
 
   const form = useForm({
     initialValues: DEFAULT_VALUES,
-    validate: formValidators,
-    transformValues: ({ MSSubClass, ...rest }) => ({
-      ...rest,
-      MSSubClass: Number(MSSubClass),
+    validate: yupResolver(schema),
+    transformValues: (values) => ({
+      ...values,
       OverallQual: overallQualSliderVal,
       OverallCond: overallCondSliderVal,
     }),
@@ -107,7 +93,7 @@ export const InputForm = () => {
     handleInitiateFetch();
     try {
       const prediction = await client.getPrediction(
-        values as unknown as HousePredictionInput
+        transformFormValuesForSave(values)
       );
       handleCompleteFetch(prediction);
     } catch (e) {
@@ -243,7 +229,9 @@ export const InputForm = () => {
           id='OverallQual'
           label={overallQualSliderVal}
           value={overallQualSliderVal}
-          onChange={setOverallQualSliderVal}
+          onChange={(num: number) =>
+            setOverallQualSliderVal(num as NumericalQualityScale)
+          }
           min={1}
           max={10}
           step={1}
@@ -253,7 +241,9 @@ export const InputForm = () => {
           id='OverallCond'
           label={overallCondSliderVal}
           value={overallCondSliderVal}
-          onChange={setOverallCondSliderVal}
+          onChange={(num: number) =>
+            setOverallCondSliderVal(num as NumericalQualityScale)
+          }
           min={1}
           max={10}
           step={1}
@@ -433,12 +423,12 @@ export const InputForm = () => {
           {...form.getInputProps('TotRmsAbvGrd')}
         />
         <Select
-          id='Function'
-          label='Function'
-          data={HomeFunctionOptions}
+          id='Functional'
+          label='Functional'
+          data={FunctionalOptions}
           clearable={false}
           allowDeselect={false}
-          {...form.getInputProps('Function')}
+          {...form.getInputProps('Functional')}
         />
         <NumberInput
           id='Fireplaces'

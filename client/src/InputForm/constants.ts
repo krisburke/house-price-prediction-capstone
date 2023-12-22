@@ -1,4 +1,5 @@
 import { ComboboxData } from '@mantine/core';
+import { HousePredictionFormValues } from './types';
 
 export const QualityOptions: ComboboxData = [
   { value: 'Ex', label: 'Excellent' },
@@ -257,7 +258,7 @@ export const ElectricalOptions: ComboboxData = [
   { value: 'Mix', label: 'Mixed' },
 ];
 
-export const HomeFunctionOptions: ComboboxData = [
+export const FunctionalOptions: ComboboxData = [
   { value: 'Typ', label: 'Typical Functionality' },
   { value: 'Min1', label: 'Minor Deductions 1' },
   { value: 'Min2', label: 'Minor Deductions 2' },
@@ -294,7 +295,7 @@ export const PavedDriveOptions: ComboboxData = [
   { value: 'N', label: 'Dirt/Gravel' },
 ];
 
-export const DEFAULT_VALUES = {
+export const DEFAULT_VALUES: HousePredictionFormValues = {
   MSSubClass: '50',
   MSZoning: 'RL',
   LotFrontage: 70,
@@ -343,15 +344,14 @@ export const DEFAULT_VALUES = {
   GarageFinish: 'Fin',
   GarageCars: 1,
   GarageQual: 'TA',
-  GarageCond: 'TA',
   PavedDrive: 'Y',
   PoolArea: 0,
   PoolQC: 'NA',
   MiscVal: 0,
   YearBuilt: 2007,
-  YearRemodAdd: 2007, // TODO add that if no remodel, then same as built
+  YearRemodAdd: 2007, // TODO add note that if no remodel, then same as built
   TotalSF: 2000,
-  TotalArea: 2000, // TODO look up what this is
+  TotalArea: 2000,
   TotalBaths: 2.5,
   TotalPorchSF: 200,
 };

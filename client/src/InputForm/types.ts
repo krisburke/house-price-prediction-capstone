@@ -117,7 +117,7 @@ export type BsmtExposure = 'Gd' | 'Av' | 'Mn' | 'No' | 'NA';
 export type BsmtFinType = 'GLQ' | 'ALQ' | 'BLQ' | 'Rec' | 'LwQ' | 'Unf' | 'NA';
 export type Heating = 'Floor' | 'GasA' | 'GasW' | 'Grav' | 'OthW' | 'Wall';
 export type Electrical = 'SBrkr' | 'FuseA' | 'FuseF' | 'FuseP' | 'Mix';
-export type HomeFunction =
+export type Functional =
   | 'Typ'
   | 'Min1'
   | 'Min2'
@@ -137,8 +137,8 @@ export type GarageType =
 export type GarageFinish = 'Fin' | 'RFn' | 'Unf' | 'NA';
 export type CentralAir = 'N' | 'Y';
 export type PavedDrive = 'Y' | 'P' | 'N';
-export interface HousePredictionInput {
-  MSSubClass: MSSubClass;
+
+export interface HousePredictionBase {
   MSZoning: MSZoning;
   LotFrontage: number;
   LotArea: number;
@@ -168,8 +168,8 @@ export interface HousePredictionInput {
   BsmtCond: QualityOrNA;
   BsmtExposure: BsmtExposure;
   BsmtFinType1: BsmtFinType;
-  BsmtFindType2: BsmtFinType;
-  BmstUnfSF: number;
+  BsmtFinType2: BsmtFinType;
+  BsmtUnfSF: number;
   Heating: Heating;
   HeatingQC: Quality;
   CentralAir: CentralAir;
@@ -179,7 +179,7 @@ export interface HousePredictionInput {
   KitchenAbvGr: number;
   KitchenQual: Quality;
   TotRmsAbvGrd: number;
-  Function: HomeFunction; // TODO rename to HomeFunction
+  Functional: Functional;
   Fireplaces: number;
   FireplaceQu: QualityOrNA;
   GarageType: GarageType;
@@ -196,4 +196,12 @@ export interface HousePredictionInput {
   TotalArea: number;
   TotalBaths: number;
   TotalPorchSF: number;
+}
+
+export interface HousePredictionInput extends HousePredictionBase {
+  MSSubClass: MSSubClass;
+}
+
+export interface HousePredictionFormValues extends HousePredictionBase {
+  MSSubClass: string;
 }
