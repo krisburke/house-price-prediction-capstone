@@ -28,13 +28,13 @@ export const schema = object().shape({
         entry[1] = value;
       } else if (typeof DEFAULT_VALUES[key] === 'number') {
         entry[1] = number().required();
-      } else {
-        throw new Error('Invalid type');
       }
+
       return entry;
     })
   ),
 });
+console.log(schema);
 
 export const transformFormValuesForSave = (
   values: HousePredictionFormValues
