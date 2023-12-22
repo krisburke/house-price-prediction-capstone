@@ -1,12 +1,10 @@
-import { InputForm } from '../InputForm';
+import { Form } from '../Form';
 import styles from './App.module.css';
 
-function App() {
+export const App = () => {
   return (
     <main className={styles.app}>
-      <InputForm />
+      <Form />
     </main>
   );
-}
-
-export default App;
+};

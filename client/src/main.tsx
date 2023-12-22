@@ -6,7 +6,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import App from './App/App.tsx';
+import { App } from './components/App';
 
 import '@mantine/core/styles.css';
 import { MantineProvider } from '@mantine/core';

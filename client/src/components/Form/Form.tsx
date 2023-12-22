@@ -1,16 +1,7 @@
 import { useState } from 'react';
-import {
-  Box,
-  Button,
-  Card,
-  Group,
-  NumberInput,
-  Select,
-  Slider,
-  Text,
-} from '@mantine/core';
+import { Box, Button, Card, Group, Slider, Text } from '@mantine/core';
 import { TransformedValues, useForm, yupResolver } from '@mantine/form';
-import styles from './InputForm.module.css';
+import styles from './Form.module.css';
 import {
   BldgTypeOptions,
   BsmtExposureOptions,
@@ -41,14 +32,16 @@ import {
   RoofStyleOptions,
   StreetOptions,
   UtilitiesOptions,
-} from './constants';
-import { FastApiClient } from '../client';
-import { schema, transformFormValuesForSave } from './utils';
-import { NumericalQualityScale } from './types';
+} from '../../constants';
+import { FastApiClient } from '../../client';
+import { schema, transformFormValuesForSave } from '../../utils';
+import { NumericalQualityScale } from '../../types';
+import { Select } from '../Select';
+import { NumberInput } from '../NumberInput';
 
 const client = new FastApiClient();
 
-export const InputForm = () => {
+export const Form = () => {
   const [prediction, setPrediction] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -113,118 +106,113 @@ export const InputForm = () => {
         <Select
           id='MSSubClass'
           label='MSSubClass'
-          data={MSSubClassOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('MSSubClass')}
+          description='Identifies the type of dwelling involved in the sale.'
+          options={MSSubClassOptions}
+          form={form}
         />
         <Select
           id='MSZoning'
           label='MSZoning'
-          data={MSZoningOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('MSZoning')}
+          description='Identifies the general zoning classification of the sale.'
+          options={MSZoningOptions}
+          form={form}
         />
         <NumberInput
           id='LotFrontage'
           label='LotFrontage'
-          {...form.getInputProps('LotFrontage')}
+          description='Linear feet of street connected to property'
+          form={form}
         />
         <NumberInput
           id='LotArea'
+          description='Lot size in square feet'
           label='LotArea'
-          {...form.getInputProps('LotArea')}
+          form={form}
         />
         <Select
           id='Street'
           label='Street'
-          data={StreetOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Street')}
+          description='Type of road access to property'
+          options={StreetOptions}
+          form={form}
         />
         <Select
           id='LotShape'
           label='LotShape'
-          data={LotShapeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('LotShape')}
+          description='General shape of property'
+          options={LotShapeOptions}
+          form={form}
         />
         <Select
           id='LandContour'
           label='LandContour'
-          data={LandContourOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('LandContour')}
+          description='Flatness of the property'
+          options={LandContourOptions}
+          form={form}
         />
         <Select
           id='Utilities'
           label='Utilities'
-          data={UtilitiesOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Utilities')}
+          description='Type of utilities available'
+          options={UtilitiesOptions}
+          form={form}
         />
         <Select
           id='LotConfig'
           label='LotConfig'
-          data={LotConfigOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('LotConfig')}
+          description='Lot configuration'
+          options={LotConfigOptions}
+          form={form}
         />
         <Select
           id='LandSlope'
           label='LandSlope'
-          data={LandSlopeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('LandSlope')}
+          description='Slope of property'
+          options={LandSlopeOptions}
+          form={form}
         />
         <Select
           id='Neighborhood'
           label='Neighborhood'
-          data={NeighborhoodOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Neighborhood')}
+          description='Physical locations within Ames city limits'
+          options={NeighborhoodOptions}
+          form={form}
         />
         <Select
           id='Condition1'
           label='Condition1'
-          data={ConditionOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Condition1')}
+          description='Proximity to various conditions'
+          options={ConditionOptions}
+          form={form}
         />
+
         <Select
           id='Condition2'
           label='Condition2'
-          data={ConditionOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Condition2')}
+          description='Proximity to various conditions (if there is more than one present)'
+          options={ConditionOptions}
+          form={form}
         />
         <Select
           id='BldgType'
           label='BldgType'
-          data={BldgTypeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BldgType')}
+          description='Type of dwelling'
+          options={BldgTypeOptions}
+          form={form}
         />
         <Select
           id='HouseStyle'
           label='HouseStyle'
-          data={HouseStyleOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('HouseStyle')}
+          description='Style of dwelling'
+          options={HouseStyleOptions}
+          form={form}
         />
-        <Text component='label'>Overall Quality</Text>
+        <Text component='label' size='sm'>
+          Overall Quality
+        </Text>
+        <Text size='xs'>
+          Rates the overall material and finish of the house
+        </Text>
         <Slider
           id='OverallQual'
           label={overallQualSliderVal}
@@ -236,7 +224,10 @@ export const InputForm = () => {
           max={10}
           step={1}
         />
-        <Text component='label'>Overall Condition</Text>
+        <Text component='label' size='sm'>
+          Overall Condition
+        </Text>
+        <Text size='xs'>Rates the overall condition of the house</Text>
         <Slider
           id='OverallCond'
           label={overallCondSliderVal}
@@ -251,282 +242,272 @@ export const InputForm = () => {
         <Select
           id='RoofStyle'
           label='RoofStyle'
-          data={RoofStyleOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('RoofStyle')}
+          description='Type of roof'
+          options={RoofStyleOptions}
+          form={form}
         />
         <Select
           id='RoofMatl'
           label='RoofMatl'
-          data={RoofMatlOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('RoofMatl')}
+          description='Roof material'
+          options={RoofMatlOptions}
+          form={form}
         />
         <Select
           id='Exterior1st'
           label='Exterior1st'
-          data={ExteriorOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Exterior1st')}
+          description='Exterior covering on house'
+          options={ExteriorOptions}
+          form={form}
         />
         <Select
           id='Exterior2nd'
           label='Exterior2nd'
-          data={ExteriorOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Exterior2nd')}
+          description='Exterior covering on house (if more than one material)'
+          options={ExteriorOptions}
+          form={form}
         />
         <Select
           id='MasVnrType'
           label='MasVnrType'
-          data={MassVnrTypeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('MasVnrType')}
+          description='Masonry veneer type'
+          options={MassVnrTypeOptions}
+          form={form}
         />
         <NumberInput
           id='MasVnrArea'
           label='MasVnrArea'
-          {...form.getInputProps('MasVnrArea')}
+          description='Masonry veneer area in square feet'
+          form={form}
         />
         <Select
           id='ExterQual'
+          description='Evaluates the quality of the material on the exterior'
           label='ExterQual'
-          data={QualityOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('ExterQual')}
+          options={QualityOptions}
+          form={form}
         />
         <Select
           id='ExterCond'
+          description='Evaluates the present condition of the material on the exterior'
           label='ExterCond'
-          data={QualityOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('ExterCond')}
+          options={QualityOptions}
+          form={form}
         />
         <Select
           id='Foundation'
           label='Foundation'
-          data={FoundationOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Foundation')}
+          description='Type of foundation'
+          options={FoundationOptions}
+          form={form}
         />
         <Select
           id='BsmtQual'
           label='BsmtQual'
-          data={QualityOrNAOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BsmtQual')}
+          description='Evaluates the height of the basement'
+          options={QualityOrNAOptions}
+          form={form}
         />
         <Select
           id='BsmtCond'
           label='BsmtCond'
-          data={QualityOrNAOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BsmtCond')}
+          description='Evaluates the general condition of the basement'
+          options={QualityOrNAOptions}
+          form={form}
         />
         <Select
           id='BsmtExposure'
           label='BsmtExposure'
-          data={BsmtExposureOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BsmtExposure')}
+          description='Refers to walkout or garden level walls'
+          options={BsmtExposureOptions}
+          form={form}
         />
         <Select
           id='BsmtFinType1'
           label='BsmtFinType1'
-          data={BsmtFinTypeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BsmtFinType1')}
+          description='Rating of basement finished area'
+          options={BsmtFinTypeOptions}
+          form={form}
         />
         <Select
           id='BsmtFinType2'
           label='BsmtFinType2'
-          data={BsmtFinTypeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('BsmtFinType2')}
+          description='Rating of basement finished area (if multiple types)'
+          options={BsmtFinTypeOptions}
+          form={form}
         />
         <NumberInput
           id='BsmtUnfSF'
           label='BsmtUnfSF'
-          {...form.getInputProps('BsmtUnfSF')}
+          description='Unfinished square feet of basement area'
+          form={form}
         />
         <Select
           id='Heating'
           label='Heating'
-          data={HeatingOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Heating')}
+          description='Type of heating'
+          options={HeatingOptions}
+          form={form}
         />
         <Select
           id='HeatingQC'
           label='HeatingQC'
-          data={QualityOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('HeatingQC')}
+          description='Heating quality and condition'
+          options={QualityOptions}
+          form={form}
         />
         <Select
           id='CentralAir'
           label='CentralAir'
-          data={CentralAirOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('CentralAir')}
+          description='Central air conditioning'
+          options={CentralAirOptions}
+          form={form}
         />
         <Select
           id='Electrical'
           label='Electrical'
-          data={ElectricalOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Electrical')}
+          description='Electrical system'
+          options={ElectricalOptions}
+          form={form}
         />
         <NumberInput
           id='LowQualFinSF'
           label='LowQualFinSF'
-          {...form.getInputProps('LowQualFinSF')}
+          description='Low quality finished square feet (all floors)'
+          form={form}
         />
         <NumberInput
           id='BedroomAbvGr'
           label='BedroomAbvGr'
-          {...form.getInputProps('BedroomAbvGr')}
+          description='Bedrooms above grade (does NOT include basement bedrooms)'
+          form={form}
         />
         <NumberInput
           id='KitchenAbvGr'
           label='KitchenAbvGr'
-          {...form.getInputProps('KitchenAbvGr')}
+          description='Kitchens above grade'
+          form={form}
         />
         <Select
           id='KitchenQual'
           label='KitchenQual'
-          data={QualityOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('KitchenQual')}
+          description='Kitchen quality'
+          options={QualityOptions}
+          form={form}
         />
         <NumberInput
           id='TotRmsAbvGrd'
           label='TotRmsAbvGrd'
-          {...form.getInputProps('TotRmsAbvGrd')}
+          description='Total rooms above grade (does not include bathrooms)'
+          form={form}
         />
         <Select
           id='Functional'
           label='Functional'
-          data={FunctionalOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('Functional')}
+          description='Home functionality (Assume typical unless deductions are warranted)'
+          options={FunctionalOptions}
+          form={form}
         />
         <NumberInput
           id='Fireplaces'
           label='Fireplaces'
-          {...form.getInputProps('Fireplaces')}
+          description='Number of fireplaces'
+          form={form}
         />
         <Select
           id='FireplaceQu'
           label='FireplaceQu'
-          data={QualityOrNAOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('FireplaceQu')}
+          description='Fireplace quality'
+          options={QualityOrNAOptions}
+          form={form}
         />
         <Select
           id='GarageType'
           label='GarageType'
-          data={GarageTypeOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('GarageType')}
+          description='Garage location'
+          options={GarageTypeOptions}
+          form={form}
         />
         <Select
           id='GarageFinish'
           label='GarageFinish'
-          data={GarageFinishOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('GarageFinish')}
+          description='Interior finish of the garage'
+          options={GarageFinishOptions}
+          form={form}
         />
         <NumberInput
           id='GarageCars'
           label='GarageCars'
-          {...form.getInputProps('GarageCars')}
+          description='Size of garage in car capacity'
+          form={form}
         />
         <Select
           id='GarageQual'
           label='GarageQual'
-          data={QualityOrNAOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('GarageQual')}
+          description='Garage quality'
+          options={QualityOrNAOptions}
+          form={form}
         />
         <Select
           id='PavedDrive'
           label='PavedDrive'
-          data={PavedDriveOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('PavedDrive')}
+          description='Paved driveway'
+          options={PavedDriveOptions}
+          form={form}
         />
         <NumberInput
           id='PoolArea'
           label='PoolArea'
-          {...form.getInputProps('PoolArea')}
+          description='Pool area in square feet'
+          form={form}
         />
         <Select
           id='PoolQC'
           label='PoolQC'
-          data={QualityOrNAOptions}
-          clearable={false}
-          allowDeselect={false}
-          {...form.getInputProps('PoolQC')}
+          description='Pool quality'
+          options={QualityOrNAOptions}
+          form={form}
         />
         <NumberInput
           id='MiscVal'
           label='MiscVal'
-          {...form.getInputProps('MiscVal')}
+          description='$Value of miscellaneous feature'
+          form={form}
         />
         <NumberInput
           id='YearBuilt'
           label='YearBuilt'
-          {...form.getInputProps('YearBuilt')}
+          description='Original construction date'
+          form={form}
         />
         <NumberInput
           id='YearRemodAdd'
           label='YearRemodAdd'
-          {...form.getInputProps('YearRemodAdd')}
+          description='Remodel date (same as construction date if no remodeling or additions)'
+          form={form}
         />
         <NumberInput
           id='TotalSF'
           label='TotalSF'
-          {...form.getInputProps('TotalSF')}
+          description='Total square feet of house (all floors)'
+          form={form}
         />
         <NumberInput
           id='TotalArea'
-          label='TotalArea'
-          {...form.getInputProps('TotalArea')}
+          label='TotalArea' /* TODO add description */
+          form={form}
         />
         <NumberInput
           id='TotalBaths'
           label='TotalBaths'
-          {...form.getInputProps('TotalBaths')}
+          description='Total number of bathrooms'
+          form={form}
         />
         <NumberInput
           id='TotalPorchSF'
           label='TotalPorchSF'
-          {...form.getInputProps('TotalPorchSF')}
+          description='Total square feet of porch area'
+          form={form}
         />
         <Group justify='flex-end' mt='md'>
           <Button type='submit' disabled={isLoading} loading={isLoading}>

@@ -1,4 +1,4 @@
-import { HousePredictionInput } from './InputForm/types';
+import { HousePredictionInput } from './types';
 
 export class FastApiClient {
   baseApiUrl: string;
