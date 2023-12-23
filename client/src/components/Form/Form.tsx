@@ -105,7 +105,7 @@ export const Form = () => {
           <Text>{errorMessage}</Text>
         </Box>
       )}
-      <Card mt={12}>
+      <Card mt={12} withBorder>
         <Text size='xl'>Predicted Sale Price: {prediction ?? ''}</Text>
       </Card>
     </Box>

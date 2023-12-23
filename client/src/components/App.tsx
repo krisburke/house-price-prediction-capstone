@@ -5,7 +5,7 @@ export const App = () => {
   return (
     <Container mt='sm' mb='xl'>
       <h1>House Price Prediction</h1>
-      <Card mb='md'>
+      <Card mb='md' withBorder>
         <p>
           Welcome to the house price prediction app! The goal of this app is to
           predict the price of a house based on a number of features. The form

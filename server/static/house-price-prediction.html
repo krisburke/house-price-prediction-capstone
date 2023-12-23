@@ -7482,7 +7482,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="C964-Capstone:-House-Price-Prediction">C964 Capstone: House Price Prediction<a class="anchor-link" href="#C964-Capstone:-House-Price-Prediction">¶</a></h1><p>In this Jupyter notebook, we develop a machine learning model for Crestview Realty to predict house prices. The process begins with data exploration and visualizations to understand the dataset, followed by the construction and valuation of various models. Our aim is to identify the most effective model that provides accurate price predictions, for usage within our application.</p>
+<h1 id="C964-Capstone:-House-Price-Prediction">C964 Capstone: House Price Prediction<a class="anchor-link" href="#C964-Capstone:-House-Price-Prediction">¶</a></h1><p>In this Jupyter notebook, we develop a machine learning model for Crestview Realty to predict house prices. The process begins with data exploration and visualizations to understand the dataset, followed by the construction and valuation of various models. We aim to identify the most effective model that provides accurate price predictions for usage within our application.</p>
 </div>
 </div>
 </div>
@@ -7504,7 +7504,7 @@ a.anchor-link {
 <span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
 <span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">make_scorer</span>
-<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">,</span> <span class="n">OneHotEncoder</span>
 <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
@@ -7524,7 +7524,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Data-Exploration">Data Exploration<a class="anchor-link" href="#Data-Exploration">¶</a></h2><p>In the upcoming section, we begin with data exploration. This initial phase is needed for gaining an understanding of  the dataset's characteristics. We start with basic statistical analysis and examining distributions to gain an initial overview. Additionally, we separate the numerical and categorical variables to analyze these datatypes individually. This is followed by a missing value analysis, important for assessing the data quality. Finally, we focus on outlier detection, utilizing individual scatter plots for each numerical feature to identify anomalies. This approach lays the groundwork for informed data processing and model development in later sections.</p>
+<h2 id="Data-Exploration">Data Exploration<a class="anchor-link" href="#Data-Exploration">¶</a></h2><p>In the upcoming section, we begin with data exploration. This initial phase is needed to understand the dataset's characteristics. We start with basic statistical analysis and examine distributions to gain an overview. Additionally, we separate the numerical and categorical variables to analyze these data types individually. This is followed by a missing value analysis, which is important for assessing the data quality. Finally, we focus on outlier detection, utilizing individual scatter plots for each numerical feature to identify anomalies. This approach lays the groundwork for informed data processing and model development in later sections.</p>
 </div>
 </div>
 </div>
@@ -9208,7 +9208,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Skewness is a measure of the asymmetry of the probability distribution of a real-valued random variable about its mean. It can be useful for understanding the direction and relative magnitude of a dataset's deviation from a normal distribution. In this case, a high number could suggest the presence of outliers, and shows us where we might want to investigate. <code>MiscVal</code>, <code>PoolArea</code>, <code>3SsnPorch</code>, <code>LotArea</code>, and <code>LowQualFinSF</code> all stand out as having higher values, so we will keep this in mind.</p>
+<p>Skewness measures the asymmetry of the probability distribution of a real-valued random variable about its mean. It can be useful for understanding the direction and relative magnitude of a dataset's deviation from a normal distribution. In this case, a high number could suggest the presence of outliers and shows us where we might want to investigate. <code>MiscVal</code>, <code>PoolArea</code>, <code>3SsnPorch</code>, <code>LotArea</code>, and <code>LowQualFinSF</code> all stand out as columns with higher values that may need to be addressed.</p>
 </div>
 </div>
 </div>
@@ -9219,7 +9219,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Scatter-Plots">Scatter Plots<a class="anchor-link" href="#Scatter-Plots">¶</a></h4><p>In the following section, we will plot each of the numerical columns in a scatter plot with the <code>SalePrice</code> for visual inspection for outliers. If an outlier is identified, we will run a query to get the ID of that item, and make a note of it. If further investigation is needed, we may also calculate the z-scores for the feature.</p>
+<h4 id="Scatter-Plots">Scatter Plots<a class="anchor-link" href="#Scatter-Plots">¶</a></h4><p>In the following section, we will plot each of the numerical columns in a scatter plot with the <code>SalePrice</code> for visual inspection of outliers. If an outlier is identified, we will run a query to get the ID of that item and make a note of it. If further investigation is needed, we may also calculate the z-scores for the feature.</p>
 </div>
 </div>
 </div>
@@ -9244,7 +9244,7 @@ a.anchor-link {
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f3567887b20&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b14dc5cd0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -10941,7 +10941,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f35697f4b20&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b14199be0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -10973,7 +10973,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f3568c84670&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b13f8d6d0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -11609,7 +11609,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f35674f7070&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b13acf1c0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -11641,7 +11641,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f3569190e80&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b14469160&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -12108,7 +12108,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f3569623fa0&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b14c11c40&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -12140,7 +12140,7 @@ Name: BsmtUnfSF, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;matplotlib.collections.PathCollection at 0x7f356998fa60&gt;</pre>
+<pre>&lt;matplotlib.collections.PathCollection at 0x7f9b13aed040&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -12904,7 +12904,7 @@ Name: PoolArea, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h5 id="Scatter-Plot-Outlier-Detection-Results">Scatter Plot Outlier Detection Results<a class="anchor-link" href="#Scatter-Plot-Outlier-Detection-Results">¶</a></h5><p>I have compiled a list of outliers and potential outliers for each feature we have plotted and analyzed. This list will be used in the next stage, when we begin data preparation, to remove homes with outliers from our dataset. This identification is subjective, so I've listed additional details as a reminder for later. It's also important to point out that some of these features could be combined using feature engineering into a single feature, and we would want to view the new features and verify that the outliers still exist. The results are as follows:</p>
+<h5 id="Scatter-Plot-Outlier-Detection-Results">Scatter Plot Outlier Detection Results<a class="anchor-link" href="#Scatter-Plot-Outlier-Detection-Results">¶</a></h5><p>I have compiled a list of outliers and potential outliers for each feature we have plotted and analyzed. When we begin data preparation, we will use this list in the next stage to remove homes with outliers from our dataset. This identification is subjective, so I've listed additional details as a reminder for later. It's also important to point out that some of these features could be combined using feature engineering into a single feature, and we would want to view the new features and verify that the outliers still exist. The results are as follows:</p>
 <ul>
 <li>LotFrontage - 935, 1299</li>
 <li>LotArea - 250, 314, 336, 707</li>
@@ -12943,7 +12943,7 @@ Name: PoolArea, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">¶</a></h2><p>In this section, we refine our dataset ensuring it is in a clean format ready for modeling. Our first step is to fill in missing values, using strategies to impute or replace them, and subsequently verifying these changes with categorical plots. Features with a high proportion of missing values are considered for removal. Building on our outlier identification from last section, we will now determine which houses to drop from our data based on being outliers. We then perform feature engineering to construct new variables that could enhance our model. Then, we'll check for correlation between features and remove any features that are too closely related, as they can skew the results. Finally, we separate our categorical data columns to be encoded - either ordinal or one-hot encoding.</p>
+<h2 id="Data-Preparation">Data Preparation<a class="anchor-link" href="#Data-Preparation">¶</a></h2><p>In this section, we clean and prepare our data for modeling. Our first step is filling in missing values, using strategies to impute or replace them, and verifying these changes with categorical plots. Features with a high proportion of missing values are considered for removal. Building on our outlier identification from the last section, we will now determine which houses to drop from our data based on being outliers. We then perform feature engineering to construct new variables that could enhance our model. Then, we'll check for correlation between features and remove any too closely related features, as they can skew the results. Finally, we separate our categorical data columns to be encoded - either ordinal or one-hot encoding.</p>
 </div>
 </div>
 </div>
@@ -12954,7 +12954,7 @@ Name: PoolArea, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Missing-Value-Analysis">Missing Value Analysis<a class="anchor-link" href="#Missing-Value-Analysis">¶</a></h3><p>In the previous step, we looked at the number of missing values per feature. Below, we go through each feature that had missing data, use the <code>unqiue</code> function to view the current values, and then fill in the missing value -- often with "None". Then, we plot the data on a categorical box plot to verify the imputation strategy.</p>
+<h3 id="Missing-Value-Analysis">Missing Value Analysis<a class="anchor-link" href="#Missing-Value-Analysis">¶</a></h3><p>We looked at the number of missing values per feature in the previous step. Below, we go through each feature that had missing data, use the <code>unique</code> function to view the current values, and then fill in the missing value -- often with <code>None</code>. Then, we plot the data on a categorical box plot to verify the imputation strategy.</p>
 </div>
 </div>
 </div>
@@ -12980,7 +12980,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3567354be0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b12ac73d0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13052,7 +13052,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[57]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f356718aeb0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b126c29a0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13114,7 +13114,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[59]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3569490f40&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b14b2eaf0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13161,7 +13161,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[61]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3568e9da30&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b144a6be0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13209,7 +13209,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[63]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3569809ee0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b14ae5a90&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13243,7 +13243,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[64]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3569490b80&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b14acfb50&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13277,7 +13277,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[65]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f356955e520&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b127cc160&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13311,7 +13311,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[66]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3568409d60&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b146a8ca0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13345,7 +13345,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[67]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3567358df0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b125a01f0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13378,7 +13378,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[68]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f356732dd00&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b12653550&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13411,7 +13411,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[69]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f356971b6a0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b14c1bd90&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13444,7 +13444,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[70]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f35672f80a0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b14a942b0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13477,7 +13477,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[71]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3568f292b0&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b148a2400&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13510,7 +13510,7 @@ Name: PoolArea, dtype: float64</pre>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[72]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f3568ef8f40&gt;</pre>
+<pre>&lt;seaborn.axisgrid.FacetGrid at 0x7f9b147763a0&gt;</pre>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -13528,7 +13528,7 @@ Name: PoolArea, dtype: float64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Electrical is a bit of a different case, because there is only one value and missing, and presumably all of our homes for sale have some type of electrical system. Below we walk through some steps to replace this value properly.</p>
+<p>Electrical is a bit of a different case because only one value is missing, and presumably, all of our homes for sale have some electrical system. Below, we walk through some steps to replace this value properly.</p>
 </div>
 </div>
 </div>
@@ -13710,7 +13710,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Next, we will be dropping some features entirely from our dataset. Sometimes when there's a lot of missing data, it's best not to use the feature, rather than trying to guess how to fill it. Below, we write a helper function for dropping features in both the dataset, and use that to remove features with many missing values. As a reminder, those features were <code>MiscVal</code>, <code>PoolArea</code>, <code>3SsnPorch</code>, <code>LotArea</code>, and <code>LowQualFinSF</code>. I will remove <code>MiscVal</code>, <code>MiscFeature</code>, <code>Alley</code>, and <code>Fence</code> due to the high amount of missing values. The others I will keep for now because I have an idea that I will use them for feature engineering.</p>
+<p>Next, we will be dropping some features entirely from our dataset. Sometimes, when there's a lot of missing data, it's best not to use the feature rather than trying to guess how to fill it.  Due to the high number of missing values, I will remove <code>MiscVal</code>, <code>MiscFeature</code>, <code>Alley</code>, and <code>Fence</code>. I will keep the other columns we identified with missing values for now because I will use them for feature engineering before dropping those.</p>
 </div>
 </div>
 </div>
@@ -13735,7 +13735,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Remove-Outliers">Remove Outliers<a class="anchor-link" href="#Remove-Outliers">¶</a></h3><p>Using the ids of the outliers we identified during the exploration phase, we will now remove these rows from the dataset. The values that we have chosen are as below. Note that the outliers we have identified as "maybe" can be experimented with in future iterations to determine which model performs best in the evaluation phase.</p>
+<h3 id="Remove-Outliers">Remove Outliers<a class="anchor-link" href="#Remove-Outliers">¶</a></h3><p>We will now remove these rows from the dataset using the ids of the outliers we identified during the exploration phase. The values that we have chosen are as follows. Note that the outliers we have identified as "maybe" can be experimented with in future iterations to determine which model performs best in the evaluation phase.</p>
 </div>
 </div>
 </div>
@@ -13778,7 +13778,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Feature-Engineering">Feature Engineering<a class="anchor-link" href="#Feature-Engineering">¶</a></h3><p>We create a helper function to easily add features to the dataset. Then, using domain knowledge we add features that may correlate with Sale Price. This is an iterative process of feature engineering, and then evaluating the effect on our models' accuracy.</p>
+<h3 id="Feature-Engineering">Feature Engineering<a class="anchor-link" href="#Feature-Engineering">¶</a></h3><p>We create a helper function to add features to the dataset easily. Then, using domain knowledge, we add features that may correlate with Sale Price. Feature engineering is an iterative process where we can try different things and evaluate the effect on our models' accuracy.</p>
 </div>
 </div>
 </div>
@@ -13913,7 +13913,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Feature-Correlation-Analysis">Feature Correlation Analysis<a class="anchor-link" href="#Feature-Correlation-Analysis">¶</a></h3><p>Next, we check for correlations between features, and drop features based on a high correlation with each other. High correlation with SalePrice is good, but high correlation with other features can skew the predictions.</p>
+<h3 id="Feature-Correlation-Analysis">Feature Correlation Analysis<a class="anchor-link" href="#Feature-Correlation-Analysis">¶</a></h3><p>Next, we check for correlations between features and drop features based on a high correlation. A high correlation with SalePrice is good, but a high correlation with other features can skew the predictions.</p>
 </div>
 </div>
 </div>
@@ -13975,7 +13975,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Other-Data-Preparation">Other Data Preparation<a class="anchor-link" href="#Other-Data-Preparation">¶</a></h3><p>Earlier we noticed that SalePrice is positively skewed. After log transformation, the distribution of SalePrice appears normal.</p>
+<h3 id="Other-Data-Preparation">Other Data Preparation<a class="anchor-link" href="#Other-Data-Preparation">¶</a></h3><p>Earlier, we noticed that SalePrice is positively skewed. After log transformation, the distribution of SalePrice appears normal.</p>
 </div>
 </div>
 </div>
@@ -14034,7 +14034,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Encoding">Encoding<a class="anchor-link" href="#Encoding">¶</a></h3><p>We need to encode our categorical data into numerical formats to make these variables usable by machine learning models. Below we manually sort the categorical data columns to be either one-hot or ordinal encoded. One-hot encoding is used for nominal data where no intrinsic ordering is present, while ordinal preserves the order of categories.</p>
+<h3 id="Encoding">Encoding<a class="anchor-link" href="#Encoding">¶</a></h3><p>We need to encode our categorical data into numerical formats to make these variables usable by machine learning models. Below, we manually sort the categorical data columns to be one-hot or ordinally encoded. We choose a one-hot encoding for nominal data where no intrinsic ordering is present, while ordinal preserves the order of categories.</p>
 </div>
 </div>
 </div>
@@ -14120,7 +14120,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">¶</a></h2><h3 id="Preprocessing">Preprocessing<a class="anchor-link" href="#Preprocessing">¶</a></h3><p>Before the actual modeling, we must prepare our data through a series of preprocessing steps to make sure our data is in the correct format for the machine learning algorithms to process it effectively. We start by constructing three preprocessing pipelines. For our numerical data, we implement a pipeline that first fills in any missing values with the mean (using a simple imputer) and then applies standard scaling to normalize the data. For ordinal categorical data we use a pipeline that employs an imputer with the most frequent strategy to handle missing values, followed by an ordinal encoder to convert these categories into a numerical format that preserves their inherent order. For categorical data with no intrinsic order, we create a pipeline that also starts with imputation using the most frequent strategy but then applies one-hot encoding to transform these categories into a binary matrix. With these pipelines in place, we integrate them into a single column transformer that applies each pipeline to its corresponding set of features, as categorized in the previous steps.</p>
+<h2 id="Modeling">Modeling<a class="anchor-link" href="#Modeling">¶</a></h2><h3 id="Preprocessing">Preprocessing<a class="anchor-link" href="#Preprocessing">¶</a></h3><p>Before the actual modeling, we must prepare our data through a series of preprocessing steps to ensure it is in the correct format for the machine learning algorithms to process it effectively. We start by constructing three preprocessing pipelines. For our numerical data, we implement a pipeline that fills in any missing values with the mean (using a simple imputer) and then applies standard scaling to normalize the data. For ordinal categorical data, we use a pipeline that employs an imputer with the most frequent strategy to handle missing values, followed by an ordinal encoder to convert these categories into a numerical format that preserves their inherent order. For categorical data with no intrinsic order, we create a pipeline that also starts with imputation using the most frequent strategy but then applies one-hot encoding to transform these categories into a binary matrix. With these pipelines in place, we integrate them into a single-column transformer that applies each pipeline to its corresponding set of features, as categorized in the previous steps.</p>
 </div>
 </div>
 </div>
@@ -14218,7 +14218,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Build-Models">Build Models<a class="anchor-link" href="#Build-Models">¶</a></h3><p>In the next phase, we construct machine learning models to predict our target variable. Our primary focus is on two models: RandomForestRegressor and XGBoost. We build a pipeline for the RandomForest model made up of two steps - preprocessing, where our previously defined column transformer is applied, and the actual RandomForest model. We use GridSearchCV to fine-tune the model by finding the best combination of hyperparameters. This process involves cross-validation to make sure the model's performance is generalizable and robust. Following a similar approach, we also apply this pipeline and grid search technique to an XGBoost model.</p>
+<h3 id="Build-Models">Build Models<a class="anchor-link" href="#Build-Models">¶</a></h3><p>In the next phase, we construct machine learning models to predict our target variable. Our primary focus is on two models: RandomForestRegressor and XGBoost. We build a pipeline for the RandomForest model made up of two steps - preprocessing, where our previously defined column transformer is applied, and the actual RandomForest model. We use GridSearchCV to fine-tune the model by finding the best combination of hyperparameters. This process involves cross-validation to ensure the model's performance is generalizable and robust. Following a similar approach, we apply this pipeline and grid search technique to an XGBoost model.</p>
 </div>
 </div>
 </div>
@@ -14536,7 +14536,7 @@ Name: count, dtype: int64</pre>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">¶</a></h2><p>In this section, we aim to assess the performance of our trained models and ensure their accuracy and reliability. For this we use two statistical metrics: Mean Squared Error (MSE) and Mean Absolute Error (MAE). We utilize a custom scoring function that computes these metrics across multiple folds of cross-validation. This approah averages the performance metrics over several subsets of data for a more reliable evaluation. The <code>get_scores</code> helper function returns the MAE and MSE over the specified number of folds. We then calculate the feature importances for the best performing model and plot this in a barchart. This chart helps us understand which variables most influence our preedictions. It validates the model's internal logic, and also provides valuable insights for potential feature engineering and model refinement.</p>
+<h2 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation">¶</a></h2><p>In this section, we aim to assess the performance of our trained models and ensure their accuracy and reliability. We use two statistical metrics: Mean Squared Error (MSE) and Mean Absolute Error (MAE). We utilize a custom scoring function that computes these metrics across multiple cross-validation folds. This approach averages the performance metrics over several subsets of data for a more reliable evaluation. The get_scores helper function returns the MAE and MSE over the specified folds. We then calculate the feature importance for the best-performing model and plot this in a bar chart. This chart helps us understand which variables most influence our predictions. It validates the model's internal logic and provides valuable insights for potential feature engineering and model refinement.</p>
 </div>
 </div>
 </div>
