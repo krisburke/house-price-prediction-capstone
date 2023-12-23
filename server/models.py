@@ -8,7 +8,7 @@ class HouseData(BaseModel):
     """
     A model representing house data for sale.
 
-    For detailed descriptions of each field, refer to 'data/data_description.txt'.
+    For detailed descriptions of each field, refer to '../notebook/data_description.txt'.
     """
     MSSubClass: Literal[20, 30, 40, 45, 50, 60, 70, 75, 80, 85, 90,
                         120, 150, 160, 180, 190]
