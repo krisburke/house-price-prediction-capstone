@@ -36,11 +36,5 @@ export const MiscFormSection: React.FC<{
       description='Low quality finished square feet (all floors)'
       form={form}
     />
-    <NumberInput
-      id='MiscVal'
-      label='MiscVal'
-      description='$ Value of miscellaneous feature'
-      form={form}
-    />
   </Fieldset>
 );

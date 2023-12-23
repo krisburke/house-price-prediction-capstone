@@ -347,9 +347,8 @@ export const DEFAULT_VALUES: HousePredictionFormValues = {
   PavedDrive: 'Y',
   PoolArea: 0,
   PoolQC: 'NA',
-  MiscVal: 0,
   YearBuilt: 2007,
-  YearRemodAdd: 2007, // TODO add note that if no remodel, then same as built
+  YearRemodAdd: 2007,
   TotalSF: 2000,
   TotalArea: 2000,
   TotalBaths: 2.5,

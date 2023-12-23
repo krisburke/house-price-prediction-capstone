@@ -37,12 +37,13 @@ export const BasicDetailsFormSection: React.FC<{
     <NumberInput
       id='TotalSF'
       label='TotalSF'
-      description='Total square feet of house (all floors)'
+      description='Total square feet of first and second floor and finished basement area'
       form={form}
     />
     <NumberInput
       id='TotalArea'
-      label='TotalArea' /* TODO add description */
+      label='TotalArea'
+      description='Total above grade living area and basement area in square feet'
       form={form}
     />
     <Select

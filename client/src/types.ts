@@ -189,7 +189,6 @@ export interface HousePredictionBase {
   PavedDrive: PavedDrive;
   PoolArea: number;
   PoolQC: QualityOrNA;
-  MiscVal: number;
   YearBuilt: number;
   YearRemodAdd: number;
   TotalSF: number;

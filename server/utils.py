@@ -12,7 +12,6 @@ def add_house_age(df):
 def add_house_remodel_age(df):
     """
     Adds the age of the house since the last remodel to the dataframe.
-    TODO handle N/A values - is this already handled in pipeline? or manually prior to pipeline?
     """
     current_year = datetime.now().year
     df['HouseRemodelAge'] = current_year - df['YearRemodAdd']
