@@ -77,7 +77,6 @@ class HouseData(BaseModel):
     PavedDrive: Literal['Y', 'P', 'N']
     PoolArea: int
     PoolQC: Literal['Ex', 'Gd', 'TA', 'Fa', 'NA']
-    MiscVal: int
     YearBuilt: int
     YearRemodAdd: int
     TotalSF: int

@@ -347,7 +347,6 @@ export const DEFAULT_VALUES: HousePredictionFormValues = {
   PavedDrive: 'Y',
   PoolArea: 0,
   PoolQC: 'NA',
-  MiscVal: 0,
   YearBuilt: 2007,
   YearRemodAdd: 2007,
   TotalSF: 2000,
