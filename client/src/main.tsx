@@ -13,7 +13,7 @@ import { MantineProvider } from '@mantine/core';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <MantineProvider defaultColorScheme='dark'>
+    <MantineProvider defaultColorScheme='auto'>
       <Router>
         <Routes>
           <Route path='/' element={<App />} />

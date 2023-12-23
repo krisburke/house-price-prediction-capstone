@@ -90,6 +90,11 @@ export const Form = () => {
           </Flex>
         </Flex>
         <Group justify='flex-end' mt='md'>
+          {isLoading && (
+            <Text size='md'>
+              Crunching the numbers...Your prediction will be ready in a moment!
+            </Text>
+          )}
           <Button type='submit' disabled={isLoading} loading={isLoading}>
             Submit
           </Button>
