@@ -8,11 +8,11 @@ export const App = () => {
       <Card mb='md' withBorder>
         <p>
           Welcome to the house price prediction app! The goal of this app is to
-          predict the price of a house based on a number of features. The form
-          below has some default values to get you started, but feel free to
-          change them to see how the prediction changes. Once you're ready,
-          click the "Submit" button to see the prediction! Or, checkout the
-          Jupyter notebook that was used to train the model.
+          predict a house's price based on several features. The form below has
+          some default values to get you started but feel free to change them to
+          see how the prediction changes. Once ready, click the "Submit" button
+          to see the prediction! Or, check out the Jupyter Notebook to inspect
+          the model's development process.
         </p>
         <Anchor href='/notebook' target='_blank' rel='noopener noreferrer'>
           Jupyter Notebook
